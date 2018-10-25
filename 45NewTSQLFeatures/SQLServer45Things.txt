@@ -1,0 +1,126 @@
+CTE
+row_number()
+rank
+dense_rank
+ntile
+tablesample 
+
+CLR (ASSEMBLIES)
+
+XQUERY
+PIVOT
+http://msdn.microsoft.com/en-us/library/ms177410.aspx
+
+UNPIVOT
+http://msdn.microsoft.com/en-us/library/ms177410.aspx
+
+OUTPUT
+http://msdn.microsoft.com/en-us/library/ms177564.aspx
+Has access to inserted/deleted virtual tables
+Can dump to table variable, physical table or spool rows
+
+TOP N
+TOP @N
+TOP @N PERCENT
+-- Just like the old top, only now it's variable
+DECLARE @rowCount int
+SET @rowCount = 3
+SELECT TOP @rowCount FROM sys.databases
+
+CROSS APPLY
+http://technet.microsoft.com/en-us/library/ms175156.aspx
+Uses a table valued function for each row in outer query.  
+Similar to INNER JOIN in that only returns rows if fn has rows
+
+OUTER APPLY
+http://technet.microsoft.com/en-us/library/ms175156.aspx
+Uses a table valued function for each row in outer query.  
+Similar to OUTER JOIN in that it always returns rows regardless of whether fn has rows
+
+
+TRY/CATCH
+http://msdn.microsoft.com/en-us/library/ms175976.aspx
+BEGIN TRY
+     { sql_statement | statement_block }
+END TRY
+BEGIN CATCH
+     ERROR_NUMBER() returns the number of the error.
+     ERROR_SEVERITY() returns the severity.
+     ERROR_STATE() returns the error state number.
+     ERROR_PROCEDURE() returns the name of the stored procedure or trigger where the error occurred.
+     ERROR_LINE() returns the line number inside the routine that caused the error.
+     ERROR_MESSAGE() returns the complete text of the error message. The text includes the values supplied for any substitutable parameters, such as lengths, object names, or times.
+
+     [ { sql_statement | statement_block } ]
+END CATCH
+
+UNION
+
+INTERSECT
+http://msdn.microsoft.com/en-us/library/ms188055.aspx
+
+EXCEPT
+http://msdn.microsoft.com/en-us/library/ms188055.aspx
+
+EXECUTE AS
+http://msdn.microsoft.com/en-us/library/ms188354.aspx
+caller:  default mode
+self:  person creating or altering the module
+owner:  owner of the current module. 
+user_name:  
+login_name
+
+
+DATABASE SNAPSHOT
+http://msdn.microsoft.com/en-us/library/ms175158.aspx
+
+SYNONYM
+PARTITION (table & index)
+Include on index
+.WRITE (Specifies that a section of the value of column_name is to be modified.  similar to STUFF)
+trigger
+
+(types)
+XML [new]
+varchar(max), nvarchar(max), varbinary(max) [enhanced]
+
+DMO (dmv, dmf)
+
+Intellisense {2008}
+declare & initial variables in a single statement {2008}
+DECLARE @foo int = 0;
+
+compound assignment +=, -=... {2008}
+DECLARE @foo2 int = 0;
+SET @foo2 += 5;
+
+table value constructor (VALUES allows for anonymous table declaration) {2008}
+http://technet.microsoft.com/en-us/library/dd776382.aspx
+DECLARE
+	@T TABLE
+(
+    t_id int identity(1,1) NOT NULL PRIMARY KEY
+,   val varchar(30) NOT NULL
+,   zee_date datetime
+)
+VALUES
+    ('Franz Ferdinand', '1914-06-28')
+,   ('Eamon de Valera', '1973-06-25')
+
+user defined table type {2008}
+
+table valued parameter {2008}
+
+merge {2008}
+
+group by grouping sets {2008}
+
+sparse columns {2008}
+
+filtered indexes and statistics {2008}
+
+cdc
+
+extended events {2008}
+
+filestream
